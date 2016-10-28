@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./mainTemplate.xhtml">
+
+            <ui:define name="top">
+            </ui:define>
+
+            <ui:define name="content">
+                <b:row>
+                    <b:column medium-screen="2" offset="10">
+                        <h:form>
+                            <h:commandLink action="#{auth.logout()}" value="Se déconnecter"></h:commandLink>
+                        </h:form>
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <b:column medium-screen="4" offset="4">
+                        <p>Bonjour #{auth.utilisateur.prenom} #{auth.utilisateur.nom}</p>
+                        <p>Le produit du jour est "#{produitMBean.produitDuJour.nom}" au prix HT de #{produitMBean.produitDuJour.prix}€</p>
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <b:column medium-screen="1" offset="4">
+                        Quantité
+                    </b:column>
+                    <b:column medium-screen="1">
+                        <h:form>
+                            <b:inputText type="number" id="quantite" value="" />
+                        </h:form>
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <b:column medium-screen="4" offset="4">
+                        <h:form>
+                            <b:commandButton action="#{produitMBean.produitDuJour.baisserStock(1)}" value="Ajouter le produit du jour au panier"></b:commandButton>
+                        </h:form>
+                    </b:column>
+                </b:row>
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

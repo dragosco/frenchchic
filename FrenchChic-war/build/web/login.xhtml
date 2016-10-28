@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./mainTemplate.xhtml">
+
+            <ui:define name="top">
+            </ui:define>
+
+            <ui:define name="content">
+                    <h:form>
+                        <b:panel>
+                             <b:row>
+                                <b:column medium-screen="2" offset="4">
+                                  <h:outputText value="Pseudo :"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText id="username" value="#{auth.pseudo}" required="true">
+                                        <!--<f:facet name="prepend">
+                                            <b:iconAwesome name="user" />
+                                        </f:facet>-->
+                                    </b:inputText>
+                                </b:column>
+                                <b:column medium-screen="6">
+                                  <b:message for="username"/>
+                                </b:column>
+                              </b:row>
+                            
+                            <b:row>
+                                <b:column medium-screen="2" offset="4">
+                                  <h:outputText value="Mot de passe :"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputSecret type="password" id="password" value="#{auth.pass}" required="true">
+                                        <!--<f:facet name="prepend">
+                                            <b:iconAwesome name="unlock-alt" > </b:iconAwesome>
+                                        </f:facet>-->
+                                    </b:inputSecret>
+                                </b:column>
+                                <b:column medium-screen="6">
+                                  <b:message for="password" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column span="2" offset="6">
+                                    <b:commandButton action="#{auth.login()}" value="S'identifier"></b:commandButton>
+                                </b:column>
+                                
+                            </b:row>
+                            <b:row>
+                                <b:column offset="4">
+                                    <h:outputText value="#{auth.message}"/>
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </h:form>
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
